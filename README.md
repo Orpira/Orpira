@@ -42,5 +42,5 @@
 <p align="left">
   <a href="https://www.linkedin.com/in/orlando-pineda-raad-273402257/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
   <a href="mailto:orpira@icloud.com"><img src="https://img.shields.io/badge/-Email-D14836?style=for-the-badge&logo=gmail&logoColor=white"/></a>
-  <a href="https://wa.me/34643684541" target="_blank"><img src="https://img.shields.io/badge/-Móvil-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"/></a>
+  <a href="https://wa.me/34643684541?text=Hola%20Orlando!%20Te%20contacto%20desde%20tu%20GitHub." target="_blank"><img src="https://img.shields.io/badge/-Móvil-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"/></a>
 </p>
