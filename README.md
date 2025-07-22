@@ -40,7 +40,7 @@
 ### 🌐 Conéctate conmigo
 
 <p align="left">
-  <a href="https://linkedin.com/in/orpira" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
-  <a href="mailto:orlando@example.com"><img src="https://img.shields.io/badge/-Email-D14836?style=for-the-badge&logo=gmail&logoColor=white"/></a>
-  <a href="tel:+34123456789"><img src="https://img.shields.io/badge/-Móvil-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"/></a>
+  <a href="https://www.linkedin.com/in/orlando-pineda-raad-273402257/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
+  <a href="mailto:orpira@icloud.com"><img src="https://img.shields.io/badge/-Email-D14836?style=for-the-badge&logo=gmail&logoColor=white"/></a>
+  <a href="tel:+34643684541"><img src="https://img.shields.io/badge/-Móvil-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"/></a>
 </p>
