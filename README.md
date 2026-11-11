@@ -1,5 +1,5 @@
 <a href="https://www.orpira.es">
-  <img src="assets/banner.svg" width="100%" alt="OrPiRa · Tecnología con visión de negocio · Full Stack, Coordinación IT y Producto Digital">
+  <img src="assets/banner.svg" width="100%" alt="OrπRa (OrPiRa), Orlando Pineda Raad · Tecnología con visión de negocio · Full Stack, Coordinación IT y Producto Digital">
 </a>
 
 <p align="center">

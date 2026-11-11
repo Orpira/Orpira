@@ -5,14 +5,15 @@ El texto se convierte a trazados para que el banner se vea igual en cualquier
 sistema: GitHub muestra los SVG como imagen y no carga tipografías externas.
 
 Tipografías (licencia SIL OFL, las mismas del portfolio orpira.es):
-    npm i @fontsource/instrument-serif @fontsource/geist-sans @fontsource/geist-mono
+    npm i @fontsource/geist-sans @fontsource/geist-mono
 Uso:
     pip install fonttools pillow
     python3 scripts/build_assets.py --fonts <carpeta node_modules/@fontsource> \
-        --cube <opr-cubo.png, el logotipo original con fondo transparente>
+        --cube <opr-cubo.png> --wordmark <OrPiRa-SF.png>
 
-El cubo es el logotipo original de OrPiRa, incrustado en el SVG (GitHub no
-carga imágenes externas dentro de un SVG).
+El cubo y la marca «OrπRa» son los logotipos originales (PNG con fondo
+transparente), incrustados en el SVG porque GitHub no carga imágenes externas
+dentro de un SVG.
 
 Para cambiar un texto del banner, edita las constantes de abajo y vuelve a ejecutar.
 """
@@ -26,10 +27,8 @@ from fontTools.ttLib import TTFont
 from PIL import Image
 
 # ── Contenido ────────────────────────────────────────────────────────────────
-NAME = ("Or", "Pi", "Ra")
 TAGLINE = "Tecnología con visión de negocio"
 ROLES = "FULL STACK · COORDINACIÓN IT · PRODUCTO DIGITAL"
-EYEBROW = "ORLANDO PINEDA RAAD · BILBAO"
 PI_DIGITS = "3.14159 26535 89793 23846"
 
 # ── Paleta ───────────────────────────────────────────────────────────────────
@@ -38,8 +37,6 @@ INK, INK_SOFT, INK_MUTED = "#F4F7FF", "#C3CEE8", "#8B9AC0"
 ROLE_COLOR = "#8BE9F8"
 
 FONT_FILES = {
-    "serif": "instrument-serif/files/instrument-serif-latin-400-normal.woff",
-    "serif-i": "instrument-serif/files/instrument-serif-latin-400-italic.woff",
     "sans": "geist-sans/files/geist-sans-latin-400-normal.woff",
     "sans-m": "geist-sans/files/geist-sans-latin-500-normal.woff",
     "mono": "geist-mono/files/geist-mono-latin-500-normal.woff",
@@ -85,10 +82,10 @@ class Glyphs:
         return "".join(f'<path id="{g}" d="{d}"/>' for g, d in self.defs.items() if d)
 
 
-def cube_data(path, px):
-    """Logotipo original reducido y codificado para incrustarlo en el SVG."""
+def logo_data(path, px):
+    """Logotipo original recortado, reducido y codificado para incrustarlo en el SVG."""
     im = Image.open(path).convert("RGBA")
-    im = im.crop(im.getbbox())
+    im = im.crop(im.getchannel("A").point(lambda v: 255 if v > 24 else 0).getbbox())
     im.thumbnail((px, px), Image.LANCZOS)
     buf = io.BytesIO()
     im.save(buf, "WEBP", quality=86, method=6)
@@ -104,57 +101,46 @@ def cube(href, ratio, cx, cy, h, shadow=True):
             f'<use href="#cubo" transform="translate({cx - w / 2:.1f} {cy - h / 2:.1f}) scale({h / 100:.4f})"/>')
 
 
-def wordmark(g, x, y, size, anchor="start"):
-    w = [g.width("serif", NAME[0], size), g.width("serif-i", NAME[1], size), g.width("serif", NAME[2], size)]
-    gap = size * 0.012
-    if anchor == "middle":
-        x -= (sum(w) + 2 * gap) / 2
-    a, _ = g.text("serif", NAME[0], x, y, size, "url(#silver)")
-    b, _ = g.text("serif-i", NAME[1], x + w[0] + gap, y, size, "url(#brandText)")
-    c, _ = g.text("serif", NAME[2], x + w[0] + w[1] + 2 * gap, y, size, "url(#silver)")
-    return a + b + c, sum(w) + 2 * gap
-
-
-def banner(g, href, ratio):
+def banner(g, cube_href, ratio, mark_href, mark_ratio):
     W, H = 1280, 440
-    # Escritorio ─ texto a la izquierda, cubo a la derecha.
-    d = []
-    t, _ = g.text("mono", EYEBROW, 84, 112, 15, INK_MUTED, tracking=3.2)
+    href = cube_href
+
+    def brand(x, y, w):
+        return f'<use href="#marca" transform="translate({x:.1f} {y:.1f}) scale({w / mark_ratio / 100:.4f})"/>'
+
+    # Escritorio ─ marca y texto a la izquierda, cubo a la derecha.
+    mw = 500
+    top = 78
+    d = [brand(66, top, mw)]
+    t, _ = g.text("sans", TAGLINE, 84, top + mw / mark_ratio + 62, 33, INK_SOFT)
     d.append(t)
-    wm, _ = wordmark(g, 78, 248, 156)
-    d.append(wm)
-    t, _ = g.text("sans", TAGLINE, 84, 308, 33, INK_SOFT)
-    d.append(t)
-    d.append(f'<rect x="84" y="346" width="56" height="3" rx="1.5" fill="url(#brand)"/>')
-    t, _ = g.text("mono", ROLES, 158, 354, 16.5, ROLE_COLOR, tracking=2.6)
+    y = top + mw / mark_ratio + 108
+    d.append(f'<rect x="84" y="{y - 8:.0f}" width="56" height="3" rx="1.5" fill="url(#brand)"/>')
+    t, _ = g.text("mono", ROLES, 158, y, 16.5, ROLE_COLOR, tracking=2.6)
     d.append(t)
     d.append(cube(href, ratio, 1030, 212, 300))
     t, _ = g.text("mono", PI_DIGITS, 1030, 404, 12.5, INK_MUTED, tracking=2.4, anchor="middle",
                   extra=' opacity=".7"')
     d.append(t)
 
-    # Móvil ─ todo centrado y más grande; el cubo acompaña al nombre.
-    ch = 190
-    ww = wordmark(g, 0, 0, 200)[1]
-    x0 = (W - (ch * ratio + 34 + ww)) / 2
-    m = [cube(href, ratio, x0 + ch * ratio / 2, 128, ch, shadow=False)]
-    wm, _ = wordmark(g, x0 + ch * ratio + 34, 196, 200)
-    m.append(wm)
-    t, _ = g.text("sans-m", TAGLINE, W / 2, 284, 60, INK_SOFT, anchor="middle")
+    # Móvil ─ todo centrado y más grande; el cubo acompaña a la marca.
+    ch, mw = 180, 600
+    mh = mw / mark_ratio
+    x0 = (W - (ch * ratio + 30 + mw)) / 2
+    m = [cube(href, ratio, x0 + ch * ratio / 2, 22 + mh / 2, ch, shadow=False),
+         brand(x0 + ch * ratio + 30, 22, mw)]
+    t, _ = g.text("sans-m", TAGLINE, W / 2, 22 + mh + 72, 58, INK_SOFT, anchor="middle")
     m.append(t)
-    m.append(f'<rect x="{W / 2 - 60}" y="318" width="120" height="5" rx="2.5" fill="url(#brand)"/>')
-    t, _ = g.text("mono", ROLES, W / 2, 384, 33, ROLE_COLOR, tracking=3.5, anchor="middle")
+    t, _ = g.text("mono", ROLES, W / 2, 22 + mh + 142, 33, ROLE_COLOR, tracking=3.5, anchor="middle")
     m.append(t)
 
     return f'''<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 {W} {H}" role="img" aria-labelledby="t d">
-<title id="t">OrPiRa · {TAGLINE}</title>
-<desc id="d">{EYEBROW.title().replace(" · ", ", ")}. {ROLES.title()}. Logotipo: cubo con las caras Or, π y Ra.</desc>
+<title id="t">OrπRa (OrPiRa), Orlando Pineda Raad · {TAGLINE}</title>
+<desc id="d">{ROLES.title()}. Logotipos: marca OrπRa y cubo con las caras Or, π y Ra.</desc>
 <style>.m{{display:none}}@media (max-width:560px){{.d{{display:none}}.m{{display:inline}}}}</style>
 <defs>
 <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#050916"/><stop offset=".55" stop-color="#0A1129"/><stop offset="1" stop-color="#100F33"/></linearGradient>
 <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{CYAN}"/><stop offset=".5" stop-color="{BLUE}"/><stop offset="1" stop-color="{VIOLET}"/></linearGradient>
-<linearGradient id="brandText" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4FE3F7"/><stop offset=".55" stop-color="#6AA5FF"/><stop offset="1" stop-color="#A78BFA"/></linearGradient>
-<linearGradient id="silver" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".55" stop-color="#E8EDF7"/><stop offset="1" stop-color="#AEB9CF"/></linearGradient>
 <radialGradient id="shadow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".7"/><stop offset=".6" stop-color="#000" stop-opacity=".3"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
 <radialGradient id="halo" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#7FB2FF" stop-opacity=".42"/><stop offset=".45" stop-color="{BLUE}" stop-opacity=".16"/><stop offset="1" stop-color="{VIOLET}" stop-opacity="0"/></radialGradient>
 <radialGradient id="glowC" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="{CYAN}" stop-opacity=".22"/><stop offset="1" stop-color="{CYAN}" stop-opacity="0"/></radialGradient>
@@ -165,6 +151,7 @@ def banner(g, href, ratio):
 <mask id="dotMask"><rect width="{W}" height="{H}" fill="url(#fade)"/></mask>
 <clipPath id="card"><rect width="{W}" height="{H}" rx="28"/></clipPath>
 <image id="cubo" href="{href}" width="{100 * ratio:.2f}" height="100"/>
+<image id="marca" href="{mark_href}" width="{100 * mark_ratio:.2f}" height="100"/>
 {g.defs_svg()}
 </defs>
 <g clip-path="url(#card)">
@@ -184,15 +171,17 @@ def banner(g, href, ratio):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--fonts", required=True, help="carpeta node_modules/@fontsource")
-    ap.add_argument("--cube", required=True, help="logotipo original (PNG con transparencia)")
+    ap.add_argument("--cube", required=True, help="cubo original (PNG con transparencia)")
+    ap.add_argument("--wordmark", required=True, help="marca OrπRa original (PNG con transparencia)")
     ap.add_argument("--out", default=os.path.join(os.path.dirname(__file__), "..", "assets"))
     a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
     g = Glyphs(a.fonts)
-    im, href = cube_data(a.cube, 420)
-    ratio = im.width / im.height
-    banner(g, href, ratio)  # primera pasada: registra los glifos que irán en <defs>
-    svg = banner(g, href, ratio)
+    im, href = logo_data(a.cube, 420)
+    mk, mark_href = logo_data(a.wordmark, 760)
+    args = (g, href, im.width / im.height, mark_href, mk.width / mk.height)
+    banner(*args)  # primera pasada: registra los glifos que irán en <defs>
+    svg = banner(*args)
     with open(os.path.join(a.out, "banner.svg"), "w", encoding="utf-8") as fh:
         fh.write(svg)
     print("banner.svg", len(svg.encode()), "bytes")
