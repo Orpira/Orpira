@@ -101,7 +101,7 @@ def cube(href, ratio, cx, cy, h, shadow=True):
     floor = (f'<ellipse cx="{cx}" cy="{cy + h * 0.5:.0f}" rx="{h * 0.46:.0f}" ry="{h * 0.07:.0f}" fill="url(#shadow)"/>'
              if shadow else "")
     return (f'<ellipse cx="{cx}" cy="{cy}" rx="{h * 0.95:.0f}" ry="{h * 0.8:.0f}" fill="url(#halo)"/>{floor}'
-            f'<image href="{href}" x="{cx - w / 2:.1f}" y="{cy - h / 2:.1f}" width="{w:.1f}" height="{h:.1f}"/>')
+            f'<use href="#cubo" transform="translate({cx - w / 2:.1f} {cy - h / 2:.1f}) scale({h / 100:.4f})"/>')
 
 
 def wordmark(g, x, y, size, anchor="start"):
@@ -164,6 +164,7 @@ def banner(g, href, ratio):
 <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".45" stop-color="#fff" stop-opacity=".25"/><stop offset="1" stop-color="#fff"/></linearGradient>
 <mask id="dotMask"><rect width="{W}" height="{H}" fill="url(#fade)"/></mask>
 <clipPath id="card"><rect width="{W}" height="{H}" rx="28"/></clipPath>
+<image id="cubo" href="{href}" width="{100 * ratio:.2f}" height="100"/>
 {g.defs_svg()}
 </defs>
 <g clip-path="url(#card)">
