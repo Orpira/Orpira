@@ -34,7 +34,7 @@ Control horario y liquidación de horas extra para una operación logística con
 
 - **Empieza por:** [`liquidacion.ts`](https://github.com/Orpira/Inout/blob/main/packages/core/src/liquidacion.ts), el motor que liquida minuto a minuto, y [`reglas-liquidacion.md`](https://github.com/Orpira/Inout/blob/main/docs/reglas-liquidacion.md), que explica las reglas en lenguaje de negocio.
 - **Stack:** React · Fastify · Drizzle ORM · PostgreSQL · PWA · Docker · Vitest
-- [Abrir la app](https://inout.orpira.es/) · [Repositorio](https://github.com/Orpira/Inout)
+- [Abrir la app](https://inout.orpira.es/) · [Repositorio](https://github.com/Orpira/Inout) · [Caso de estudio](https://www.orpira.es/casos/inout)
 
 ### Private Balance · `Beta`
 
