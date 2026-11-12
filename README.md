@@ -7,7 +7,7 @@
   &nbsp;·&nbsp;
   <a href="#proyectos">Proyectos</a>
   &nbsp;·&nbsp;
-  <a href="https://www.linkedin.com/in/orlando-pineda-raad-273402257">LinkedIn</a>
+  <a href="https://www.linkedin.com/in/orpira">LinkedIn</a>
 </p>
 
 Soy **Orlando Pineda Raad**. En [orpira.es](https://www.orpira.es) cuento qué construyo y para quién; aquí está el código que lo demuestra. Este perfil es una guía para leerlo: qué decisiones tomo, en qué archivo se ven y por dónde conviene empezar en cada repositorio.
@@ -34,7 +34,7 @@ Control horario y liquidación de horas extra para una operación logística con
 
 - **Empieza por:** [`liquidacion.ts`](https://github.com/Orpira/Inout/blob/main/packages/core/src/liquidacion.ts), el motor que liquida minuto a minuto, y [`reglas-liquidacion.md`](https://github.com/Orpira/Inout/blob/main/docs/reglas-liquidacion.md), que explica las reglas en lenguaje de negocio.
 - **Stack:** React · Fastify · Drizzle ORM · PostgreSQL · PWA · Docker · Vitest
-- [Abrir la app](https://inout.orpira.es/) · [Repositorio](https://github.com/Orpira/Inout)
+- [Abrir la app](https://inout.orpira.es/) · [Repositorio](https://github.com/Orpira/Inout) · [Caso de estudio](https://www.orpira.es/casos/inout)
 
 ### Private Balance · `Beta`
 
@@ -108,7 +108,7 @@ Cada fase deja algo en el repositorio que se puede abrir.
 ## 3.1415 · Contacto
 
 - **Portfolio:** [www.orpira.es](https://www.orpira.es)
-- **LinkedIn:** [orlando-pineda-raad](https://www.linkedin.com/in/orlando-pineda-raad-273402257)
+- **LinkedIn:** [linkedin.com/in/orpira](https://www.linkedin.com/in/orpira)
 - **GitHub:** [github.com/Orpira](https://github.com/Orpira)
 
 <p align="center">
