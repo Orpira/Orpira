@@ -10,7 +10,7 @@
   <a href="https://www.linkedin.com/in/orpira">LinkedIn</a>
 </p>
 
-Soy **Orlando Pineda Raad**. En [orpira.es](https://www.orpira.es) cuento qué construyo y para quién; aquí está el código que lo demuestra. Este perfil es una guía para leerlo: qué decisiones tomo, en qué archivo se ven y por dónde conviene empezar en cada repositorio.
+Soy **Orlando Pineda Raad**. En [orpira.es](https://www.orpira.es) cuento qué construyo y para quién; aquí está el código que lo demuestra. Este perfil es una guía para leerlo: qué decisiones tomo y en qué archivo se ven, y los proyectos donde probarlo.
 
 Vengo de coordinar el área de TI de una operación logística, así que programo pensando en quien va a usar la herramienta a diario y en quien tendrá que mantenerla después.
 
@@ -26,13 +26,11 @@ Cinco criterios que repito de un proyecto a otro, cada uno con el archivo donde 
 
 <a name="proyectos"></a>
 
-## 3.1 · Proyectos, y por qué archivo empezar
+## 3.1 · Proyectos
 
 <a href="https://inout.orpira.es/"><img src="assets/proyectos/inout.svg" width="100%" alt="01 · Inout · En línea"></a>
 
 Control horario y liquidación de horas extra para una operación logística con turnos rotativos. El kiosko de fichaje sigue funcionando sin conexión.
-
-**Empieza por** [`liquidacion.ts`](https://github.com/Orpira/Inout/blob/main/packages/core/src/liquidacion.ts), el motor que liquida minuto a minuto, y [`reglas-liquidacion.md`](https://github.com/Orpira/Inout/blob/main/docs/reglas-liquidacion.md), que explica las reglas en lenguaje de negocio.
 
 `React` `Fastify` `Drizzle ORM` `PostgreSQL` `PWA` `Docker` `Vitest`
 
@@ -44,8 +42,6 @@ Control horario y liquidación de horas extra para una operación logística con
 
 Gestión financiera personal y profesional que mantiene los datos en el dispositivo. Una sola base de código para web, PWA y Android.
 
-**Empieza por** [`docs/`](https://github.com/Orpira/finance-app/tree/main/docs), la arquitectura documentada decisión a decisión, y [`test/`](https://github.com/Orpira/finance-app/tree/main/test), con más de 200 archivos de pruebas.
-
 `React` `TypeScript` `Vite` `Tailwind CSS` `Dexie (IndexedDB)` `Capacitor` `Vitest`
 
 **[Abrir la app →](https://private-balance.orpira.es/)** &nbsp;·&nbsp; [Repositorio](https://github.com/Orpira/finance-app) &nbsp;·&nbsp; [Caso de estudio](https://www.orpira.es/casos/private-balance)
@@ -55,8 +51,6 @@ Gestión financiera personal y profesional que mantiene los datos en el disposit
 <a href="https://lasdelicias.orpira.es/"><img src="assets/proyectos/las-delicias.svg" width="100%" alt="03 · Las Delicias · Piloto"></a>
 
 Pedidos desde la mesa con QR, encargos para recoger y pantallas en directo para la barra y la cocina de una cafetería panadería.
-
-**Empieza por** [`server/migrations/`](https://github.com/Orpira/lasdelicias/tree/main/server/migrations), trece migraciones SQL que cuentan cómo creció el producto: del esquema inicial a las cuentas, los cierres diarios y la idempotencia.
 
 `React` `TypeScript` `Tailwind CSS` `Fastify` `PostgreSQL` `Zod` `Docker` `n8n`
 
@@ -68,8 +62,6 @@ Pedidos desde la mesa con QR, encargos para recoger y pantallas en directo para 
 
 Práctica de desarrollo web con retos de código, incidencias reales para depurar y laboratorios de SQL y Git.
 
-**Empieza por** [`sql/engine.ts`](https://github.com/Orpira/test_interactivo-supabase/blob/main/src/features/sql/engine.ts), un PostgreSQL que se ejecuta dentro del navegador para los ejercicios de SQL, y [`learning/fsrs.ts`](https://github.com/Orpira/test_interactivo-supabase/blob/main/src/features/learning/fsrs.ts), el repaso espaciado.
-
 `React` `TypeScript` `Supabase` `Claude API` `Capacitor` `Playwright`
 
 **[Abrir la app →](https://webwiz.orpira.es/)** &nbsp;·&nbsp; [Repositorio](https://github.com/Orpira/test_interactivo-supabase) &nbsp;·&nbsp; [Caso de estudio](https://www.orpira.es/casos/webwiz)
@@ -80,11 +72,9 @@ Práctica de desarrollo web con retos de código, incidencias reales para depura
 
 Cinco juegos multijugador para el navegador, con salas con código, turnos y ranking. El Dominó 3D, a cuatro jugadores contra bots o en línea, es el más ambicioso.
 
-**Empieza por** [`lib/core`](https://github.com/Orpira/Cleta-s-stop/tree/main/lib/core), las salas y la puntuación que comparten los juegos, y [`lib/games`](https://github.com/Orpira/Cleta-s-stop/tree/main/lib/games), con un módulo por juego. El código del Dominó 3D no es público.
-
 `Next.js` `TypeScript` `Supabase` `Three.js`
 
-**[Jugar al Dominó 3D →](https://domino-3d.orpira.es/)** &nbsp;·&nbsp; [Suite de juegos](https://suite-juegos.orpira.es/juegos) &nbsp;·&nbsp; [Repositorio](https://github.com/Orpira/Cleta-s-stop) &nbsp;·&nbsp; [Caso de estudio](https://www.orpira.es/casos/juegos)
+**[Jugar al Dominó 3D →](https://domino-3d.orpira.es/)** &nbsp;·&nbsp; [Suite de juegos](https://suite-juegos.orpira.es/juegos) &nbsp;·&nbsp; [Repositorio de la suite](https://github.com/Orpira/Cleta-s-stop) &nbsp;·&nbsp; [Caso de estudio](https://www.orpira.es/casos/juegos)
 
 <br>
 
