@@ -37,7 +37,7 @@ PROJECTS = [
     ("private-balance", "Private Balance", "FINANZAS PRIVADAS · WEB, PWA Y ANDROID", "BETA", (109, 79, 200)),
     ("las-delicias", "Las Delicias", "PEDIDOS CON QR · BARRA Y COCINA EN DIRECTO", "PILOTO", (184, 92, 56)),
     ("webwiz", "WebWiz Quiz", "PRÁCTICA DE DESARROLLO WEB", "EN PRODUCCIÓN", (24, 150, 184)),
-    ("juegos", "Dominó 3D y suite de juegos", "CINCO JUEGOS MULTIJUGADOR", "EN PRODUCCIÓN", (196, 136, 40)),
+    ("juegos", "Dominó 3D y suite de juegos", "CINCO JUEGOS MULTIJUGADOR", "EN PRODUCCIÓN", (184, 120, 28)),
     ("empleabilidad", "Seguimiento de empleabilidad", "DEL EXCEL AL PANEL DEL EQUIPO", "MVP", (23, 132, 126)),
 ]
 
@@ -180,11 +180,15 @@ def banner(g, cube_href, ratio, mark_href, mark_ratio):
 
 
 def project_strip(fonts, n, name, kicker, status, tone):
-    """Cabecera de un proyecto: misma tarjeta oscura del banner, con el color del proyecto."""
+    """Cabecera de un proyecto: una tarjeta con el color del proyecto."""
     g = Glyphs(fonts)
     W, H = 1280, 150
+    def mix(to, k):
+        return "rgb(%d %d %d)" % tuple(round(c + (t - c) * k) for c, t in zip(tone, to))
+
     rgb = "rgb(%d %d %d)" % tone
-    light = "rgb(%d %d %d)" % tuple(round(c + (255 - c) * 0.58) for c in tone)
+    light = mix((255, 255, 255), 0.82)
+    deep, soft = mix((10, 17, 41), 0.42), mix((255, 255, 255), 0.12)
     num = f"{n:02d}"
 
     def pill(x_right, y, size, pad):
@@ -192,8 +196,8 @@ def project_strip(fonts, n, name, kicker, status, tone):
         h = size * 2.1
         x = x_right - w
         t, _ = g.text("mono", status, x + pad + size * 1.1, y + h / 2 + size * 0.36, size, light, tracking=size * 0.14)
-        return (f'<rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="{h / 2:.1f}" fill="{rgb}" fill-opacity=".22" '
-                f'stroke="{light}" stroke-opacity=".55" stroke-width="1.5"/>'
+        return (f'<rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="{h / 2:.1f}" fill="#fff" fill-opacity=".16" '
+                f'stroke="#fff" stroke-opacity=".6" stroke-width="1.5"/>'
                 f'<circle cx="{x + pad + size * 0.3:.1f}" cy="{y + h / 2:.1f}" r="{size * 0.3:.1f}" fill="{light}"/>{t}')
 
     def build():
@@ -218,9 +222,9 @@ def project_strip(fonts, n, name, kicker, status, tone):
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" role="img" aria-label="{num} · {name} · {status.capitalize()}">
 <style>.m{{display:none}}@media (max-width:560px){{.d{{display:none}}.m{{display:inline}}}}</style>
 <defs>
-<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#050916"/><stop offset=".6" stop-color="#0A1129"/><stop offset="1" stop-color="#100F33"/></linearGradient>
-<radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="{rgb}" stop-opacity=".55"/><stop offset="1" stop-color="{rgb}" stop-opacity="0"/></radialGradient>
-<pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#9DB4FF" fill-opacity=".10"/></pattern>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{deep}"/><stop offset=".55" stop-color="{rgb}"/><stop offset="1" stop-color="{soft}"/></linearGradient>
+<radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+<pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#fff" fill-opacity=".14"/></pattern>
 <clipPath id="card"><rect width="{W}" height="{H}" rx="22"/></clipPath>
 {g.defs_svg()}
 </defs>
@@ -228,11 +232,11 @@ def project_strip(fonts, n, name, kicker, status, tone):
 <rect width="{W}" height="{H}" fill="url(#bg)"/>
 <ellipse cx="1180" cy="150" rx="520" ry="230" fill="url(#glow)"/>
 <rect width="{W}" height="{H}" fill="url(#dots)"/>
-<rect width="10" height="{H}" fill="{rgb}"/>
+<rect width="10" height="{H}" fill="#fff" fill-opacity=".35"/>
 <g class="d">{"".join(d)}</g>
 <g class="m">{"".join(m)}</g>
 </g>
-<rect x=".75" y=".75" width="{W - 1.5}" height="{H - 1.5}" rx="21.25" fill="none" stroke="{light}" stroke-opacity=".28" stroke-width="1.5"/>
+<rect x=".75" y=".75" width="{W - 1.5}" height="{H - 1.5}" rx="21.25" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="1.5"/>
 </svg>
 '''
 
