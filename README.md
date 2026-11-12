@@ -32,7 +32,15 @@ Cinco criterios que repito de un proyecto a otro, cada uno con el archivo donde 
 
 Control horario y liquidación de horas extra para una operación logística con turnos rotativos. El kiosko de fichaje sigue funcionando sin conexión.
 
-`React` `Fastify` `Drizzle ORM` `PostgreSQL` `PWA` `Docker` `Vitest`
+<p>
+  <img src="https://img.shields.io/badge/React-1B2233?style=flat-square&logo=react&logoColor=61DAFB" height="24" alt="React">
+  <img src="https://img.shields.io/badge/Fastify-1B2233?style=flat-square&logo=fastify&logoColor=FFFFFF" height="24" alt="Fastify">
+  <img src="https://img.shields.io/badge/Drizzle%20ORM-1B2233?style=flat-square&logo=drizzle&logoColor=C5F74F" height="24" alt="Drizzle ORM">
+  <img src="https://img.shields.io/badge/PostgreSQL-1B2233?style=flat-square&logo=postgresql&logoColor=6C8DF5" height="24" alt="PostgreSQL">
+  <img src="https://img.shields.io/badge/PWA-1B2233?style=flat-square&logo=pwa&logoColor=A78BFA" height="24" alt="PWA">
+  <img src="https://img.shields.io/badge/Docker-1B2233?style=flat-square&logo=docker&logoColor=2496ED" height="24" alt="Docker">
+  <img src="https://img.shields.io/badge/Vitest-1B2233?style=flat-square&logo=vitest&logoColor=00FF74" height="24" alt="Vitest">
+</p>
 
 **[Abrir la app →](https://inout.orpira.es/)** &nbsp;·&nbsp; [Repositorio](https://github.com/Orpira/Inout) &nbsp;·&nbsp; [Caso de estudio](https://www.orpira.es/casos/inout)
 
@@ -42,7 +50,15 @@ Control horario y liquidación de horas extra para una operación logística con
 
 Gestión financiera personal y profesional que mantiene los datos en el dispositivo. Una sola base de código para web, PWA y Android.
 
-`React` `TypeScript` `Vite` `Tailwind CSS` `Dexie (IndexedDB)` `Capacitor` `Vitest`
+<p>
+  <img src="https://img.shields.io/badge/React-1B2233?style=flat-square&logo=react&logoColor=61DAFB" height="24" alt="React">
+  <img src="https://img.shields.io/badge/TypeScript-1B2233?style=flat-square&logo=typescript&logoColor=4E9BE8" height="24" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Vite-1B2233?style=flat-square&logo=vite&logoColor=A970FF" height="24" alt="Vite">
+  <img src="https://img.shields.io/badge/Tailwind%20CSS-1B2233?style=flat-square&logo=tailwindcss&logoColor=06B6D4" height="24" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/Dexie%20%28IndexedDB%29-1B2233?style=flat-square" height="24" alt="Dexie (IndexedDB)">
+  <img src="https://img.shields.io/badge/Capacitor-1B2233?style=flat-square&logo=capacitor&logoColor=119EFF" height="24" alt="Capacitor">
+  <img src="https://img.shields.io/badge/Vitest-1B2233?style=flat-square&logo=vitest&logoColor=00FF74" height="24" alt="Vitest">
+</p>
 
 **[Abrir la app →](https://private-balance.orpira.es/)** &nbsp;·&nbsp; [Repositorio](https://github.com/Orpira/finance-app) &nbsp;·&nbsp; [Caso de estudio](https://www.orpira.es/casos/private-balance)
 
@@ -52,7 +68,16 @@ Gestión financiera personal y profesional que mantiene los datos en el disposit
 
 Pedidos desde la mesa con QR, encargos para recoger y pantallas en directo para la barra y la cocina de una cafetería panadería.
 
-`React` `TypeScript` `Tailwind CSS` `Fastify` `PostgreSQL` `Zod` `Docker` `n8n`
+<p>
+  <img src="https://img.shields.io/badge/React-1B2233?style=flat-square&logo=react&logoColor=61DAFB" height="24" alt="React">
+  <img src="https://img.shields.io/badge/TypeScript-1B2233?style=flat-square&logo=typescript&logoColor=4E9BE8" height="24" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Tailwind%20CSS-1B2233?style=flat-square&logo=tailwindcss&logoColor=06B6D4" height="24" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/Fastify-1B2233?style=flat-square&logo=fastify&logoColor=FFFFFF" height="24" alt="Fastify">
+  <img src="https://img.shields.io/badge/PostgreSQL-1B2233?style=flat-square&logo=postgresql&logoColor=6C8DF5" height="24" alt="PostgreSQL">
+  <img src="https://img.shields.io/badge/Zod-1B2233?style=flat-square&logo=zod&logoColor=408AFF" height="24" alt="Zod">
+  <img src="https://img.shields.io/badge/Docker-1B2233?style=flat-square&logo=docker&logoColor=2496ED" height="24" alt="Docker">
+  <img src="https://img.shields.io/badge/n8n-1B2233?style=flat-square&logo=n8n&logoColor=FF91AC" height="24" alt="n8n">
+</p>
 
 **[Abrir la app →](https://lasdelicias.orpira.es/)** &nbsp;·&nbsp; [Repositorio](https://github.com/Orpira/lasdelicias) &nbsp;·&nbsp; [Caso de estudio](https://www.orpira.es/casos/las-delicias)
 
@@ -62,7 +87,14 @@ Pedidos desde la mesa con QR, encargos para recoger y pantallas en directo para 
 
 Práctica de desarrollo web con retos de código, incidencias reales para depurar y laboratorios de SQL y Git.
 
-`React` `TypeScript` `Supabase` `Claude API` `Capacitor` `Playwright`
+<p>
+  <img src="https://img.shields.io/badge/React-1B2233?style=flat-square&logo=react&logoColor=61DAFB" height="24" alt="React">
+  <img src="https://img.shields.io/badge/TypeScript-1B2233?style=flat-square&logo=typescript&logoColor=4E9BE8" height="24" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Supabase-1B2233?style=flat-square&logo=supabase&logoColor=3FCF8E" height="24" alt="Supabase">
+  <img src="https://img.shields.io/badge/Claude%20API-1B2233?style=flat-square&logo=claude&logoColor=D97757" height="24" alt="Claude API">
+  <img src="https://img.shields.io/badge/Capacitor-1B2233?style=flat-square&logo=capacitor&logoColor=119EFF" height="24" alt="Capacitor">
+  <img src="https://img.shields.io/badge/Playwright-1B2233?style=flat-square" height="24" alt="Playwright">
+</p>
 
 **[Abrir la app →](https://webwiz.orpira.es/)** &nbsp;·&nbsp; [Repositorio](https://github.com/Orpira/test_interactivo-supabase) &nbsp;·&nbsp; [Caso de estudio](https://www.orpira.es/casos/webwiz)
 
@@ -72,7 +104,12 @@ Práctica de desarrollo web con retos de código, incidencias reales para depura
 
 Cinco juegos multijugador para el navegador, con salas con código, turnos y ranking. El Dominó 3D, a cuatro jugadores contra bots o en línea, es el más ambicioso.
 
-`Next.js` `TypeScript` `Supabase` `Three.js`
+<p>
+  <img src="https://img.shields.io/badge/Next.js-1B2233?style=flat-square&logo=nextdotjs&logoColor=FFFFFF" height="24" alt="Next.js">
+  <img src="https://img.shields.io/badge/TypeScript-1B2233?style=flat-square&logo=typescript&logoColor=4E9BE8" height="24" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Supabase-1B2233?style=flat-square&logo=supabase&logoColor=3FCF8E" height="24" alt="Supabase">
+  <img src="https://img.shields.io/badge/Three.js-1B2233?style=flat-square&logo=threedotjs&logoColor=FFFFFF" height="24" alt="Three.js">
+</p>
 
 **[Jugar al Dominó 3D →](https://domino-3d.orpira.es/)** &nbsp;·&nbsp; [Suite de juegos](https://suite-juegos.orpira.es/juegos) &nbsp;·&nbsp; [Repositorio de la suite](https://github.com/Orpira/Cleta-s-stop) &nbsp;·&nbsp; [Caso de estudio](https://www.orpira.es/casos/juegos)
 
@@ -82,7 +119,13 @@ Cinco juegos multijugador para el navegador, con salas con código, turnos y ran
 
 Sustituye los Excel con los que una entidad de empleo sigue las candidaturas de sus aspirantes, e importa los antiguos.
 
-`Next.js` `TypeScript` `Supabase` `PostgreSQL` `ExcelJS`
+<p>
+  <img src="https://img.shields.io/badge/Next.js-1B2233?style=flat-square&logo=nextdotjs&logoColor=FFFFFF" height="24" alt="Next.js">
+  <img src="https://img.shields.io/badge/TypeScript-1B2233?style=flat-square&logo=typescript&logoColor=4E9BE8" height="24" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Supabase-1B2233?style=flat-square&logo=supabase&logoColor=3FCF8E" height="24" alt="Supabase">
+  <img src="https://img.shields.io/badge/PostgreSQL-1B2233?style=flat-square&logo=postgresql&logoColor=6C8DF5" height="24" alt="PostgreSQL">
+  <img src="https://img.shields.io/badge/ExcelJS-1B2233?style=flat-square" height="24" alt="ExcelJS">
+</p>
 
 **[Caso de estudio →](https://www.orpira.es/casos/seguimiento-empleabilidad)** &nbsp;·&nbsp; [Demo con acceso por invitación](https://laboratorio.orpira.es/) &nbsp;·&nbsp; código privado
 
