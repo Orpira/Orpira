@@ -10,23 +10,13 @@
   <a href="https://www.linkedin.com/in/orpira">LinkedIn</a>
 </p>
 
-Soy **Orlando Pineda Raad**. En [orpira.es](https://www.orpira.es) cuento qué construyo y para quién; aquí está el código que lo demuestra. Este perfil es una guía para leerlo: qué decisiones tomo y en qué archivo se ven, y los proyectos donde probarlo.
+Soy **Orlando Pineda Raad**. En [orpira.es](https://www.orpira.es) cuento qué construyo y para quién; aquí está el código que lo demuestra. Cada proyecto enlaza a su app, a su repositorio y a su caso de estudio.
 
 Vengo de coordinar el área de TI de una operación logística, así que programo pensando en quien va a usar la herramienta a diario y en quien tendrá que mantenerla después.
 
-## 3 · Decisiones que se pueden comprobar
-
-Cinco criterios que repito de un proyecto a otro, cada uno con el archivo donde se ve.
-
-- **Las reglas de negocio no dependen de nada.** En Inout, el cálculo de horas extra, festivos y parámetros legales es un paquete TypeScript sin dependencias que comparten el servidor y el cliente: [`packages/core`](https://github.com/Orpira/Inout/tree/main/packages/core/src).
-- **Lo que depende de la fecha se prueba en varias zonas horarias.** Inout se desarrolla en España y se usa en Colombia, así que la integración continua ejecuta las pruebas en UTC, Madrid y Bogotá contra un PostgreSQL real: [`ci.yml`](https://github.com/Orpira/Inout/blob/main/.github/workflows/ci.yml).
-- **Los datos viven donde menos riesgo corren.** Private Balance guarda todo en el dispositivo, y su esquema local ya va por la versión 37, cada una con su migración: [`db.ts`](https://github.com/Orpira/finance-app/blob/main/src/database/db.ts).
-- **El tiempo real sale de la base de datos, no de un servicio aparte.** En Las Delicias, PostgreSQL avisa de cada pedido y un único bus lo reparte al panel del local, al cliente y a las automatizaciones, con cada aviso firmado: [`eventos.js`](https://github.com/Orpira/lasdelicias/blob/main/server/src/eventos.js) y [`firma.js`](https://github.com/Orpira/lasdelicias/blob/main/server/src/firma.js).
-- **La IA entra con límites.** En WebWiz, la clave de Claude solo existe en el servidor y las correcciones tienen un tope diario: [`explain-review`](https://github.com/Orpira/test_interactivo-supabase/tree/main/supabase/functions/explain-review).
-
 <a name="proyectos"></a>
 
-## 3.1 · Proyectos
+## 3 · Proyectos
 
 <a href="https://inout.orpira.es/"><img src="assets/proyectos/inout.svg" width="100%" alt="01 · Inout · En línea"></a>
 
@@ -133,7 +123,7 @@ Sustituye los Excel con los que una entidad de empleo sigue las candidaturas de 
 
 **También:** [PRL Master](https://www.orpira.es/casos/prl-master) ([repositorio](https://github.com/Orpira/test_interactivo-prl)) y el [portfolio](https://github.com/Orpira/orpira-portfolio), hecho con Astro y Tailwind CSS.
 
-## 3.14 · Stack en uso
+## 3.1 · Stack en uso
 
 Solo lo que está en el código de los repositorios anteriores.
 
@@ -147,7 +137,7 @@ Solo lo que está en el código de los repositorios anteriores.
 | **Testing y herramientas** | <img src="https://img.shields.io/badge/Vitest-1B2233?style=flat-square&logo=vitest&logoColor=00FF74" height="24" alt="Vitest"> <img src="https://img.shields.io/badge/Playwright-1B2233?style=flat-square" height="24" alt="Playwright"> <img src="https://img.shields.io/badge/Testing%20Library-1B2233?style=flat-square&logo=testinglibrary&logoColor=E33332" height="24" alt="Testing Library"> <img src="https://img.shields.io/badge/ESLint-1B2233?style=flat-square&logo=eslint&logoColor=8080F2" height="24" alt="ESLint"> <img src="https://img.shields.io/badge/Lefthook-1B2233?style=flat-square&logo=lefthook&logoColor=FF1E1E" height="24" alt="Lefthook"> |
 | **IA aplicada** | <img src="https://img.shields.io/badge/Claude%20API-1B2233?style=flat-square&logo=claude&logoColor=D97757" height="24" alt="Claude API"> <img src="https://img.shields.io/badge/OpenAI%20API-1B2233?style=flat-square" height="24" alt="OpenAI API"> |
 
-## 3.141 · Qué rastro deja cada fase
+## 3.14 · Qué rastro deja cada fase
 
 **Análisis → Arquitectura → Desarrollo → Validación → Entrega**
 
@@ -161,7 +151,21 @@ Cada fase deja algo en el repositorio que se puede abrir.
 | **Validación** | Comprobación de tipos y pruebas antes de cada subida y en cada cambio, con [Lefthook](https://github.com/Orpira/finance-app/blob/main/lefthook.yml) y GitHub Actions. |
 | **Entrega** | Cada proyecto tiene una dirección pública donde probarlo. |
 
-## 3.1415 · Contacto
+<details>
+<summary><strong>Para quien quiera ver el código: cinco decisiones que se pueden comprobar</strong></summary>
+<br>
+
+Cinco criterios que repito de un proyecto a otro, cada uno con el archivo donde se ve.
+
+- **Las reglas de negocio no dependen de nada.** En Inout, el cálculo de horas extra, festivos y parámetros legales es un paquete TypeScript sin dependencias que comparten el servidor y el cliente: [`packages/core`](https://github.com/Orpira/Inout/tree/main/packages/core/src).
+- **Lo que depende de la fecha se prueba en varias zonas horarias.** Inout se desarrolla en España y se usa en Colombia, así que la integración continua ejecuta las pruebas en UTC, Madrid y Bogotá contra un PostgreSQL real: [`ci.yml`](https://github.com/Orpira/Inout/blob/main/.github/workflows/ci.yml).
+- **Los datos viven donde menos riesgo corren.** Private Balance guarda todo en el dispositivo, y su esquema local ya va por la versión 37, cada una con su migración: [`db.ts`](https://github.com/Orpira/finance-app/blob/main/src/database/db.ts).
+- **El tiempo real sale de la base de datos, no de un servicio aparte.** En Las Delicias, PostgreSQL avisa de cada pedido y un único bus lo reparte al panel del local, al cliente y a las automatizaciones, con cada aviso firmado: [`eventos.js`](https://github.com/Orpira/lasdelicias/blob/main/server/src/eventos.js) y [`firma.js`](https://github.com/Orpira/lasdelicias/blob/main/server/src/firma.js).
+- **La IA entra con límites.** En WebWiz, la clave de Claude solo existe en el servidor y las correcciones tienen un tope diario: [`explain-review`](https://github.com/Orpira/test_interactivo-supabase/tree/main/supabase/functions/explain-review).
+
+</details>
+
+## 3.141 · Contacto
 
 - **Portfolio:** [www.orpira.es](https://www.orpira.es)
 - **LinkedIn:** [linkedin.com/in/orpira](https://www.linkedin.com/in/orpira)
