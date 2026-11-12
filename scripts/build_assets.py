@@ -5,7 +5,7 @@ El texto se convierte a trazados para que el banner se vea igual en cualquier
 sistema: GitHub muestra los SVG como imagen y no carga tipografías externas.
 
 Tipografías (licencia SIL OFL, las mismas del portfolio orpira.es):
-    npm i @fontsource/geist-sans @fontsource/geist-mono
+    npm i @fontsource/instrument-serif @fontsource/geist-sans @fontsource/geist-mono
 Uso:
     pip install fonttools pillow
     python3 scripts/build_assets.py --fonts <carpeta node_modules/@fontsource> \
@@ -31,12 +31,23 @@ TAGLINE = "Tecnología con visión de negocio"
 ROLES = "FULL STACK · COORDINACIÓN IT · PRODUCTO DIGITAL"
 PI_DIGITS = "3.14159 26535 89793 23846"
 
+# Cabeceras de proyecto del README: archivo, nombre, descriptor, estado y color.
+PROJECTS = [
+    ("inout", "Inout", "CONTROL HORARIO · HORAS EXTRA", "EN LÍNEA", (58, 86, 196)),
+    ("private-balance", "Private Balance", "FINANZAS PRIVADAS · WEB, PWA Y ANDROID", "BETA", (109, 79, 200)),
+    ("las-delicias", "Las Delicias", "PEDIDOS CON QR · BARRA Y COCINA EN DIRECTO", "PILOTO", (184, 92, 56)),
+    ("webwiz", "WebWiz Quiz", "PRÁCTICA DE DESARROLLO WEB", "EN PRODUCCIÓN", (24, 150, 184)),
+    ("juegos", "Dominó 3D y suite de juegos", "CINCO JUEGOS MULTIJUGADOR", "EN PRODUCCIÓN", (184, 120, 28)),
+    ("empleabilidad", "Seguimiento de empleabilidad", "DEL EXCEL AL PANEL DEL EQUIPO", "MVP", (23, 132, 126)),
+]
+
 # ── Paleta ───────────────────────────────────────────────────────────────────
 CYAN, BLUE, VIOLET = "#22D3EE", "#3B82F6", "#8B5CF6"
 INK, INK_SOFT, INK_MUTED = "#F4F7FF", "#C3CEE8", "#8B9AC0"
 ROLE_COLOR = "#8BE9F8"
 
 FONT_FILES = {
+    "serif": "instrument-serif/files/instrument-serif-latin-400-normal.woff",
     "sans": "geist-sans/files/geist-sans-latin-400-normal.woff",
     "sans-m": "geist-sans/files/geist-sans-latin-500-normal.woff",
     "mono": "geist-mono/files/geist-mono-latin-500-normal.woff",
@@ -168,6 +179,68 @@ def banner(g, cube_href, ratio, mark_href, mark_ratio):
 '''
 
 
+def project_strip(fonts, n, name, kicker, status, tone):
+    """Cabecera de un proyecto: una tarjeta con el color del proyecto."""
+    g = Glyphs(fonts)
+    W, H = 1280, 150
+    def mix(to, k):
+        return "rgb(%d %d %d)" % tuple(round(c + (t - c) * k) for c, t in zip(tone, to))
+
+    rgb = "rgb(%d %d %d)" % tone
+    light = mix((255, 255, 255), 0.82)
+    deep, soft = mix((10, 17, 41), 0.42), mix((255, 255, 255), 0.12)
+    num = f"{n:02d}"
+
+    def pill(x_right, y, size, pad):
+        w = g.width("mono", status, size, size * 0.14) + pad * 2 + size * 1.1
+        h = size * 2.1
+        x = x_right - w
+        t, _ = g.text("mono", status, x + pad + size * 1.1, y + h / 2 + size * 0.36, size, light, tracking=size * 0.14)
+        return (f'<rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="{h / 2:.1f}" fill="#fff" fill-opacity=".16" '
+                f'stroke="#fff" stroke-opacity=".6" stroke-width="1.5"/>'
+                f'<circle cx="{x + pad + size * 0.3:.1f}" cy="{y + h / 2:.1f}" r="{size * 0.3:.1f}" fill="{light}"/>{t}')
+
+    def build():
+        d = []
+        t, _ = g.text("mono", f"{num} · {kicker}", 56, 52, 15.5, light, tracking=2.6)
+        d.append(t)
+        t, _ = g.text("serif", name, 54, 116, 64, INK)
+        d.append(t)
+        d.append(pill(W - 48, 56, 16, 20))
+        m = []
+        size = 92
+        while g.width("serif", name, size) > W - 110:
+            size -= 2
+        t, _ = g.text("mono", f"{num} · {status}", 56, 50, 30, light, tracking=4)
+        m.append(t)
+        t, _ = g.text("serif", name, 54, 126, size, INK)
+        m.append(t)
+        return d, m
+
+    build()
+    d, m = build()
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" role="img" aria-label="{num} · {name} · {status.capitalize()}">
+<style>.m{{display:none}}@media (max-width:560px){{.d{{display:none}}.m{{display:inline}}}}</style>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{deep}"/><stop offset=".55" stop-color="{rgb}"/><stop offset="1" stop-color="{soft}"/></linearGradient>
+<radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+<pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#fff" fill-opacity=".14"/></pattern>
+<clipPath id="card"><rect width="{W}" height="{H}" rx="22"/></clipPath>
+{g.defs_svg()}
+</defs>
+<g clip-path="url(#card)">
+<rect width="{W}" height="{H}" fill="url(#bg)"/>
+<ellipse cx="1180" cy="150" rx="520" ry="230" fill="url(#glow)"/>
+<rect width="{W}" height="{H}" fill="url(#dots)"/>
+<rect width="10" height="{H}" fill="#fff" fill-opacity=".35"/>
+<g class="d">{"".join(d)}</g>
+<g class="m">{"".join(m)}</g>
+</g>
+<rect x=".75" y=".75" width="{W - 1.5}" height="{H - 1.5}" rx="21.25" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="1.5"/>
+</svg>
+'''
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--fonts", required=True, help="carpeta node_modules/@fontsource")
@@ -185,6 +258,10 @@ def main():
     with open(os.path.join(a.out, "banner.svg"), "w", encoding="utf-8") as fh:
         fh.write(svg)
     print("banner.svg", len(svg.encode()), "bytes")
+    os.makedirs(os.path.join(a.out, "proyectos"), exist_ok=True)
+    for n, (slug, name, kicker, status, tone) in enumerate(PROJECTS, 1):
+        with open(os.path.join(a.out, "proyectos", slug + ".svg"), "w", encoding="utf-8") as fh:
+            fh.write(project_strip(a.fonts, n, name, kicker, status, tone))
     small = Image.open(a.cube).convert("RGBA")
     small = small.crop(small.getbbox())
     small.thumbnail((160, 160), Image.LANCZOS)
