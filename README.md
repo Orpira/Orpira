@@ -32,7 +32,7 @@ Control horario y liquidación de horas extra para una operación logística con
   <img src="https://img.shields.io/badge/Vitest-1B2233?style=flat-square&logo=vitest&logoColor=00FF74" height="24" alt="Vitest">
 </p>
 
-**[Abrir la app →](https://inout.orpira.es/)** &nbsp;·&nbsp; [Repositorio](https://github.com/Orpira/Inout) &nbsp;·&nbsp; [Caso de estudio](https://www.orpira.es/casos/inout)
+**[Abrir la app →](https://inout.orpira.es/)** &nbsp; [Caso de estudio](https://www.orpira.es/casos/inout)
 
 <br>
 
@@ -50,7 +50,7 @@ Gestión financiera personal y profesional que mantiene los datos en el disposit
   <img src="https://img.shields.io/badge/Vitest-1B2233?style=flat-square&logo=vitest&logoColor=00FF74" height="24" alt="Vitest">
 </p>
 
-**[Abrir la app →](https://private-balance.orpira.es/)** &nbsp;·&nbsp; &nbsp;·&nbsp; [Caso de estudio](https://www.orpira.es/casos/private-balance)
+**[Abrir la app →](https://private-balance.orpira.es/)** &nbsp; [Caso de estudio](https://www.orpira.es/casos/private-balance)
 
 <br>
 
