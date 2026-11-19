@@ -69,7 +69,7 @@ Pedidos desde la mesa con QR, encargos para recoger y pantallas en directo para 
   <img src="https://img.shields.io/badge/n8n-1B2233?style=flat-square&logo=n8n&logoColor=FF91AC" height="24" alt="n8n">
 </p>
 
-**[Abrir la app →](https://lasdelicias.orpira.es/)** &nbsp;·&nbsp; [Repositorio](https://github.com/Orpira/lasdelicias) &nbsp;·&nbsp; [Caso de estudio](https://www.orpira.es/casos/las-delicias)
+**[Abrir la app →](https://lasdelicias.orpira.es/)** &nbsp;·&nbsp; [Caso de estudio](https://www.orpira.es/casos/las-delicias)
 
 <br>
 
